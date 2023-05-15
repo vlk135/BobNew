@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 
 namespace Assets
@@ -98,6 +99,10 @@ namespace Assets
                             int selectedEnemy = (int)Random.Range(0, EnemyMonsters.Count());
                             DiceToken heroMove = character.GetDiceToken(character.GetDiceGameObject().GetComponent<Dice>().getEndSide());
 
+                            if (PlayerHeroes.Count() == 0 || EnemyMonsters.Count == 0)
+                            {
+                                EndGame(EnemyMonsters.Count == 0);
+                            }
                             GeneralMove(heroMove, PlayerHeroes, EnemyMonsters, selectedHero, selectedEnemy);
 
                             character.GetDiceGameObject().transform.GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, -100, 0), new Quaternion(0, 0, 0, 0));
@@ -118,7 +123,10 @@ namespace Assets
                         {
                             List<Character> HeroAlive = PlayerHeroes.Where(c=> c.getHealth() > 0).ToList();
                             List<Character> EnemyAlive = EnemyMonsters.Where(c => c.getHealth() > 0).ToList();
-
+                            if (EnemyAlive.Count() == 0 || HeroAlive.Count == 0)
+                            {
+                                EndGame(EnemyAlive.Count == 0);
+                            }
                             int selectedHero = (int)Random.Range(0, HeroAlive.Count());
                             int selectedEnemy = (int)Random.Range(0, EnemyAlive.Count());
                             DiceToken monsterMove = character.GetDiceToken(character.GetDiceGameObject().GetComponent<Dice>().getEndSide());
@@ -133,6 +141,20 @@ namespace Assets
                     break;
             }
         }
+
+        public void EndGame(bool win)
+        {
+            if(win)
+            {
+                SceneManager.LoadScene(1);
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
+            SceneManager.UnloadScene(2);
+        }
+
         public int getTurn()
         {
             return turn;
@@ -266,6 +288,7 @@ namespace Assets
         }
         public void GeneralMove(DiceToken tok, List<Character> Ally, List<Character> Enemy, int posAlly, int posEnemy)
         {
+            Debug.Log($"{Ally.Count()} - {Enemy.Count()}");
             switch(tok.GetAction())
             {
                 case "hit":
