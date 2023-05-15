@@ -1,0 +1,38 @@
+{
+	"name": "Innkeeper",
+	"maxHp": "10",
+	"color": "#bf29ff",
+	"tokens":
+	{
+		"front":
+		{
+			"pips": "2"
+			"action": "heal"
+		}
+		"top":
+		{
+			"pips": "1"
+			"action": "shield"
+		}
+		"right":
+		{
+			"pips": "1"
+			"action": "hit"
+		}
+		"left":
+		{
+			"pips": "1"
+			"action": "hit"
+		}
+		"back":
+		{
+			"pips": "1"
+			"action": "shield"
+		}
+		"bottom":
+		{
+			"pips": "1"
+			"action": "shield"
+		}
+	}
+}

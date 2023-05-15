@@ -1,0 +1,38 @@
+{
+	"name": "Blacksmith",
+	"maxHp": "12",
+	"color": "#808080",
+	"tokens":
+	{
+		"front":
+		{
+			"pips": "2"
+			"action": "shield"
+		}
+		"top":
+		{
+			"pips": "2"
+			"action": "shield"
+		}
+		"right":
+		{
+			"pips": "1"
+			"action": "hit"
+		}
+		"left":
+		{
+			"pips": "1"
+			"action": "hit"
+		}
+		"back":
+		{
+			"pips": "1"
+			"action": "shield"
+		}
+		"bottom":
+		{
+			"pips": "0"
+			"action": "nothing"
+		}
+	}
+}

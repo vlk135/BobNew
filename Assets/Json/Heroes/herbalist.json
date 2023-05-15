@@ -1,0 +1,38 @@
+{
+	"name": "Herbalist",
+	"maxHp": "9",
+	"color": "#83deca",
+	"tokens":
+	{
+		"front":
+		{
+			"pips": "3"
+			"action": "heal"
+		}
+		"top":
+		{
+			"pips": "2"
+			"action": "hit"
+		}
+		"right":
+		{
+			"pips": "0"
+			"action": "nothing"
+		}
+		"left":
+		{
+			"pips": "0"
+			"action": "nothing"
+		}
+		"back":
+		{
+			"pips": "2"
+			"action": "heal"
+		}
+		"bottom":
+		{
+			"pips": "1"
+			"action": "heal"
+		}
+	}
+}

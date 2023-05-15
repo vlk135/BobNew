@@ -1,0 +1,38 @@
+{
+	"name": "Drunkard",
+	"maxHp": "15",
+	"color": "#e6ff42",
+	"tokens":
+	{
+		"front":
+		{
+			"pips": "3"
+			"action": "taunt"
+		}
+		"top":
+		{
+			"pips": "2"
+			"action": "hit"
+		}
+		"right":
+		{
+			"pips": "1"
+			"action": "hit"
+		}
+		"left":
+		{
+			"pips": "1"
+			"action": "hit"
+		}
+		"back":
+		{
+			"pips": "0"
+			"action": "nothing"
+		}
+		"bottom":
+		{
+			"pips": "0"
+			"action": "nothing"
+		}
+	}
+}

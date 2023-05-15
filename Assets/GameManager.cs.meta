@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: b03ddf2bc6afc194498fbbf5dd9ef3b6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Dice: {fileID: 5916610606857036356, guid: 4e146c40a6262b24a86ce1c40dd5b8ba, type: 3}
+  - PlayerCard: {fileID: 3624129907792995776, guid: c9ad671176aaa7547b43d45d513042d9, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

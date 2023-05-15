@@ -1,0 +1,38 @@
+{
+	"name": "Hunter",
+	"maxHp": "8",
+	"color": "#18851b",
+	"tokens":
+	{
+		"front":
+		{
+			"pips": "3"
+			"action": "hit"
+		}
+		"top":
+		{
+			"pips": "1"
+			"action": "heal"
+		}
+		"right":
+		{
+			"pips": "2"
+			"action": "hit"
+		}
+		"left":
+		{
+			"pips": "2"
+			"action": "hit"
+		}
+		"back":
+		{
+			"pips": "0"
+			"action": "nothing"
+		}
+		"bottom":
+		{
+			"pips": "0"
+			"action": "nothing"
+		}
+	}
+}
