@@ -40,13 +40,13 @@ public class Transition : MonoBehaviour
 
     public void OpenDungeonScene()
     {
-        SceneManager.UnloadSceneAsync(1);
+        SceneManager.UnloadSceneAsync(2);
         transition.gameObject.SetActive(true);
         LeanTween.scale(transition, new Vector3(1, 1, 1), 0);
         LeanTween.scale(transition, Vector3.zero, 0.5f).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() =>
         {
             transition.gameObject.SetActive(false);
         });
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

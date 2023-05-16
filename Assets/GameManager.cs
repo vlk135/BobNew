@@ -99,9 +99,9 @@ namespace Assets
                             int selectedEnemy = (int)Random.Range(0, EnemyMonsters.Count());
                             DiceToken heroMove = character.GetDiceToken(character.GetDiceGameObject().GetComponent<Dice>().getEndSide());
 
-                            if (PlayerHeroes.Count() == 0 || EnemyMonsters.Count == 0)
+                            if (PlayerHeroes.Where(x => x.getHealth() > 0).Count() == 0 || EnemyMonsters.Where(x => x.getHealth() > 0).Count() == 0)
                             {
-                                EndGame(EnemyMonsters.Count == 0);
+                                EndGame(EnemyMonsters.Where(x => x.getHealth() > 0).Count() == 0);
                             }
                             GeneralMove(heroMove, PlayerHeroes, EnemyMonsters, selectedHero, selectedEnemy);
 
@@ -139,20 +139,25 @@ namespace Assets
                         }
                     }
                     break;
+
+                default:
+
+                    break;
             }
         }
 
         public void EndGame(bool win)
         {
+            this.turn = 0;
             if(win)
             {
-                SceneManager.LoadScene(1);
+                SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
+                SceneManager.UnloadScene(SceneManager.GetSceneAt(1));
             }
             else
             {
                 SceneManager.LoadScene(0);
             }
-            SceneManager.UnloadScene(2);
         }
 
         public int getTurn()
@@ -162,6 +167,8 @@ namespace Assets
 
         private void Start()
         {
+            SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
+
             this.DiceSpawinPoint = this.transform.position;
             PlayerHeroes = new List<Character>();
             EnemyMonsters = new List<Character>();
@@ -203,16 +210,16 @@ namespace Assets
                 GetDiceTokens(2, 1, 1, 1, 1, 1, "heal", "shield", "hit", "hit", "shield", "shield")));
 
             //Monsteur
-            this.CharacterList.Add(new Character(12, "Bat", true, new UnityEngine.Color(0.9f, 0.1f, 0.1f),
+            this.CharacterList.Add(new Character(0, "Bat", true, new UnityEngine.Color(0.9f, 0.1f, 0.1f),
                 GetDiceTokens(2, 2, 1, 1, 1, 0, "hit", "hit", "hit", "hit", "hit", "nothing")));
 
-            this.CharacterList.Add(new Character(15, "Slime", true, new UnityEngine.Color(0.9f, 0.1f, 0.3f),
+            this.CharacterList.Add(new Character(0, "Slime", true, new UnityEngine.Color(0.9f, 0.1f, 0.3f),
                 GetDiceTokens(3, 2, 1, 1, 0, 0, "hit", "hit", "hit", "hit", "nothing", "nothing")));
 
-            this.CharacterList.Add(new Character(9, "Wolf", true, new UnityEngine.Color(0.9f, 0.3f, 0.1f),
+            this.CharacterList.Add(new Character(0, "Wolf", true, new UnityEngine.Color(0.9f, 0.3f, 0.1f),
                 GetDiceTokens(3, 2, 0, 0, 2, 1, "hit", "hit", "nothing", "nothing", "hit", "hit")));
 
-            this.CharacterList.Add(new Character(8, "Spider", true, new UnityEngine.Color(0.9f, 0.1f, 0, 2f),
+            this.CharacterList.Add(new Character(0, "Spider", true, new UnityEngine.Color(0.9f, 0.1f, 0, 2f),
                 GetDiceTokens(3, 1, 2, 2, 0, 0, "hit", "hit", "hit", "hit", "nothing", "nothing")));
         }
 
