@@ -21,6 +21,8 @@ namespace Assets
         private List<Character> CharacterList;
         private List<GameObject> Dices;
         public Vector3 DiceSpawinPoint;
+        bool zacatekM = false;
+        bool zacatekP = false;
 
         private void Update()
         {
@@ -30,6 +32,14 @@ namespace Assets
                     int i = 0;
                     MonsterPrepare();
                     int endChar = 0;
+                    if(zacatekM == false)
+                    {
+                        zacatekM = true;
+                        foreach (Character character in EnemyMonsters)
+                        {
+                            character.GetDice().RollDice();
+                        }
+                    }
                     foreach (Character character in EnemyMonsters)
                     {
                         if(!character.GetDice().GetEnd())
@@ -49,14 +59,26 @@ namespace Assets
                     if (endChar == EnemyMonsters.Count())
                     {
                         this.turn = 2;
+                        zacatekM = false;
                     }
                     break;
                 case 2:
                     HeroPrepare();
                     int endChar1 = 0;
                     int i2 = 0;
+
+                    if (zacatekP == false)
+                    {
+                        zacatekP = true;
+                        foreach (Character character in PlayerHeroes)
+                        {
+                            character.GetDice().RollDice();
+                        }
+                    }
+
                     foreach (Character character in PlayerHeroes)
                     {
+
                         if (!character.GetDice().GetEnd())
                         {
                             if (character.GetDiceGameObject().GetComponent<Transform>().transform.position.y <= -100)
@@ -68,11 +90,11 @@ namespace Assets
                         else
                         {
                             character.GetDiceGameObject().GetComponent<Dice>().MoveDice(character.getCardV3());
-                            character.ChangeAllSides(character.GetDiceGameObject().GetComponent<Dice>().getEndSide());
                             endChar1++;
                         }
                         if (endChar1 == PlayerHeroes.Count())
                         {
+                            zacatekP = false;
                             this.turn++;
                         }
                     }
@@ -85,7 +107,7 @@ namespace Assets
                     this.turn = 4;
                     break;
                 case 4:
-                    int PlayerDiceUnused = PlayerHeroes.Where(c => c.GetDiceGameObject().transform.GetComponent<Transform>().position.y == -100).ToList().Count();
+                    int PlayerDiceUnused = PlayerHeroes.Where(c => c.GetDiceGameObject().transform.GetComponent<Transform>().position.y == -50).ToList().Count();
                     if(PlayerDiceUnused == PlayerHeroes.Count())
                     {
                         this.turn = 5;
@@ -105,14 +127,13 @@ namespace Assets
                             }
                             GeneralMove(heroMove, PlayerHeroes, EnemyMonsters, selectedHero, selectedEnemy);
 
-                            character.GetDiceGameObject().transform.GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, -100, 0), new Quaternion(0, 0, 0, 0));
-                            character.ChangeAllSidesBack();
-                            character.GetDice().RollDice();
+                            character.GetDiceGameObject().transform.GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 500, 0), new Quaternion(0, 0, 0, 0));
                         }
+                        this.turn = 5;
                     }
                     break;
                 case 5:
-                    int EnemyDiceUnused = EnemyMonsters.Where(c => c.GetDiceGameObject().transform.GetComponent<Transform>().position.y == -100).ToList().Count();
+                    int EnemyDiceUnused = EnemyMonsters.Where(c => c.GetDiceGameObject().transform.GetComponent<Transform>().position.y == -50).ToList().Count();
                     if (EnemyDiceUnused == EnemyMonsters.Count())
                     {
                         this.turn = 1;
@@ -133,10 +154,9 @@ namespace Assets
 
                             GeneralMove(monsterMove, EnemyAlive, HeroAlive, selectedEnemy, selectedHero);
 
-                            character.GetDiceGameObject().transform.GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, -100, 0), new Quaternion(0, 0, 0, 0));
-                            character.ChangeAllSidesBack();
-                            character.GetDice().RollDice();
+                            character.GetDiceGameObject().transform.GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 500, 0), new Quaternion(0, 0, 0, 0));
                         }
+                        this.turn = 1;
                     }
                     break;
 
@@ -151,8 +171,8 @@ namespace Assets
             this.turn = 0;
             if(win)
             {
-                SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
-                SceneManager.UnloadScene(SceneManager.GetSceneAt(1));
+                //SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
+                //SceneManager.UnloadScene(SceneManager.GetSceneAt(1));
             }
             else
             {
@@ -167,7 +187,7 @@ namespace Assets
 
         private void Start()
         {
-            SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
+            //SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
 
             this.DiceSpawinPoint = this.transform.position;
             PlayerHeroes = new List<Character>();

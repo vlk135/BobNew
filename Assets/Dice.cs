@@ -81,11 +81,6 @@ public class Dice : MonoBehaviour
 
     public void MoveDice(Vector3 v3)
     {
-        Quaternion rotace = this.transform.rotation;
-        rotace.x = Mathf.Round(rotace.x / 90) * 90;
-        rotace.y = Mathf.Round(rotace.y / 90) * 90;
-        rotace.z = Mathf.Round(rotace.z / 90) * 90;
-        this.transform.rotation = rotace;
         this.transform.position = v3 + new Vector3(0.6f,1f,0);
         this.GetComponent<Rigidbody>().useGravity = false;
     }
