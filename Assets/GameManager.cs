@@ -210,16 +210,16 @@ namespace Assets
                 GetDiceTokens(2, 1, 1, 1, 1, 1, "heal", "shield", "hit", "hit", "shield", "shield")));
 
             //Monsteur
-            this.CharacterList.Add(new Character(0, "Bat", true, new UnityEngine.Color(0.9f, 0.1f, 0.1f),
+            this.CharacterList.Add(new Character(5, "Bat", true, new UnityEngine.Color(0.9f, 0.1f, 0.1f),
                 GetDiceTokens(2, 2, 1, 1, 1, 0, "hit", "hit", "hit", "hit", "hit", "nothing")));
 
-            this.CharacterList.Add(new Character(0, "Slime", true, new UnityEngine.Color(0.9f, 0.1f, 0.3f),
+            this.CharacterList.Add(new Character(2, "Slime", true, new UnityEngine.Color(0.9f, 0.1f, 0.3f),
                 GetDiceTokens(3, 2, 1, 1, 0, 0, "hit", "hit", "hit", "hit", "nothing", "nothing")));
 
-            this.CharacterList.Add(new Character(0, "Wolf", true, new UnityEngine.Color(0.9f, 0.3f, 0.1f),
+            this.CharacterList.Add(new Character(10, "Wolf", true, new UnityEngine.Color(0.9f, 0.3f, 0.1f),
                 GetDiceTokens(3, 2, 0, 0, 2, 1, "hit", "hit", "nothing", "nothing", "hit", "hit")));
 
-            this.CharacterList.Add(new Character(0, "Spider", true, new UnityEngine.Color(0.9f, 0.1f, 0, 2f),
+            this.CharacterList.Add(new Character(4, "Spider", true, new UnityEngine.Color(0.9f, 0.1f, 0, 2f),
                 GetDiceTokens(3, 1, 2, 2, 0, 0, "hit", "hit", "hit", "hit", "nothing", "nothing")));
         }
 
